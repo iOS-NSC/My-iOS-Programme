@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-typedef void(^bolco)(NSIndexPath *,CGFloat);
-@interface ViewController : UIViewController
 
+@interface ViewController : UIViewController
 @end
 

@@ -37,26 +37,17 @@
 /************************************************/
 @implementation meTableViewController
 
-//懒加载
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
+
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-    NSString *imagePath = [path stringByAppendingPathComponent:@"imageName"];
-    
-    self.TOP.image = [UIImage imageNamed:[NSString stringWithContentsOfFile:imagePath encoding:NSUTF8StringEncoding error:nil]];
+    self.TOP.image = [UIImage returdataImage];
     self.myName.text = [NSString stringWithContentsOfFile:[path stringByAppendingPathComponent:@"name"] encoding:NSUTF8StringEncoding error:nil];
     
-    
-    
-    
-//    self.TOP.image = self.meImages;
     self.tableView.userInteractionEnabled = YES;
 //  设置头像圆形
-    [self.TOP setYuan:self.TOP];
-    [self.HuYaImage setYuan:self.HuYaImage];
+    [self.TOP setImageViewLayer];
+    [self.HuYaImage setImageViewLayer];
     
 }
 
@@ -64,12 +55,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
-
 // 点击已经订阅的主播跳转
 - (IBAction)GoBigView:(UITapGestureRecognizer *)sender {
-    NSArray *array = self.tempModel[0];
+    
     bigScreenViewController *big = [[bigScreenViewController alloc] init];
     [self  presentViewController:big animated:YES completion:nil];
 

@@ -10,7 +10,8 @@
 
 @interface UIImage (setImageOriginal)
 
++ (UIImage *) returdataImage;
 
 + (UIImage *) setImageOriginal:(NSString *) imageName;
-
++ (void) setviewlayer:(UIView *) viewName;
 @end

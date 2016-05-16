@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImage+setImageOriginal.h"
+
 #import "UIBarItem+setColor.h"
 #import "YuleCell.h"
 #import "RecipeCollectionHeaderView.h"
@@ -33,6 +34,7 @@
 #import "directTelecastModel.h"
 #import "messageController.h"
 #import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
 @interface allTopController : UIViewController
 
 @end

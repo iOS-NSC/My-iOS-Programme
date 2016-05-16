@@ -23,12 +23,13 @@
     //  设置 tabBar 图标为原色
     self.tabBarItem.image = [UIImage setImageOriginal:@"icon_tab_3_normal"];
     self.tabBarItem.selectedImage = [UIImage setImageOriginal:@"icon_tab_3_selected"];
-    [self.tabBarItem settitlEColor];
-    self.meImageView.layer.cornerRadius = 23.5;
-    self.meImageView.layer.masksToBounds = YES;
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-    NSString *imagePath = [path stringByAppendingPathComponent:@"imageName"];
-    self.meImageView.image = [UIImage imageNamed:[NSString stringWithContentsOfFile:imagePath encoding:NSUTF8StringEncoding error:nil]];
+   
+    [self.meImageView setImageViewLayer];
+    self.meImageView.image = [UIImage returdataImage];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.meImageView.image = [UIImage returdataImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,9 +63,6 @@
 {
     
 }
-
-
-
 
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

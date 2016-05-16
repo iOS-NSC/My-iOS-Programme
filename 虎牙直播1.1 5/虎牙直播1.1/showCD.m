@@ -33,19 +33,6 @@
 @implementation showCD
 
 static NSMutableDictionary *mutableDic;
-+(void)initialize
-{
-    mutableDic = [NSMutableDictionary dictionary];
-}
-
-
--(instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width,  self.frame.size.height);
-    }
-    return self;
-}
 
 // 重写数据的setter 方法 赋值
 - (void)setAllModelMassage:(messagesModel *)AllModelMassage

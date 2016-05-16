@@ -22,8 +22,6 @@
 //  设置 tabBar 图标为原色
     self.tabBarItem.image = [UIImage setImageOriginal:@"icon_tab_2_normal"];
     self.tabBarItem.selectedImage = [UIImage setImageOriginal:@"icon_tab_2_selected"];
-    [self.tabBarItem settitlEColor];
-
 }
 
 

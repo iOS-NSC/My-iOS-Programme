@@ -45,7 +45,7 @@
     self.me.image = self.meImageView;
     self.UpName.text = self.MeSetName;
 //     设置头像圆形
-    [self.me setYuan:self.me];
+    [self.me setImageViewLayer];
     BOOL sex =  [[NSUserDefaults standardUserDefaults] objectForKey:@"sex"];
     if (sex == YES) {
         self.setSexLabel.text = @"男";
@@ -58,7 +58,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   
 }
 
 - (IBAction)setMeName:(UITextField *)sender {
@@ -211,9 +211,14 @@
     self.me.image = editImage;
 //    NSDictionary *name = info;
 //    NSLog(@"%@",name);
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    NSString *imagePath = [path stringByAppendingPathComponent:@"dataImage"];
+    NSData *data = UIImagePNGRepresentation(editImage);
+    [data writeToFile:imagePath atomically:YES];
+//    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"dataImage"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
-//    NSData *data = UIImagePNGRepresentation(editImage);
-//    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"imageView"];
+
 //  编辑完成返回
     [self dismissViewControllerAnimated:YES completion:nil];
 }

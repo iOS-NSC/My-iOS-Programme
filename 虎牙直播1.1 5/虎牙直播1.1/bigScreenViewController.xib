@@ -223,18 +223,6 @@
                                 <constraint firstAttribute="height" constant="15" id="kmy-jA-Uc2"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-Gj-azC">
-                            <rect key="frame" x="334" y="179" width="25" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="25" id="4zm-fd-Bfx"/>
-                                <constraint firstAttribute="height" constant="25" id="Bu6-vI-cLK"/>
-                            </constraints>
-                            <state key="normal" backgroundImage="recorded_video_fullscreen"/>
-                            <state key="selected" backgroundImage="recorded_video_exit_fullscreen"/>
-                            <connections>
-                                <action selector="bigPing:" destination="-1" eventType="touchUpInside" id="HvC-Xd-nNo"/>
-                            </connections>
-                        </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-KT-YJ4">
                             <rect key="frame" x="299" y="181" width="20" height="21"/>
                             <constraints>
@@ -273,11 +261,22 @@
                                 <action selector="returnVc:" destination="-1" eventType="touchUpInside" id="4rb-JF-Muf"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-Gj-azC">
+                            <rect key="frame" x="332" y="170" width="35" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="3JQ-gx-HQy"/>
+                                <constraint firstAttribute="width" constant="35" id="Ym3-97-Kcw"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="button_channel_full_screen_normal"/>
+                            <state key="selected" backgroundImage="recorded_video_exit_fullscreen"/>
+                            <connections>
+                                <action selector="bigPing:" destination="-1" eventType="touchUpInside" id="HvC-Xd-nNo"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="0jj-tQ-BqP" firstAttribute="top" secondItem="JTj-S1-ofb" secondAttribute="top" constant="20" id="4Ff-YZ-o1Y"/>
-                        <constraint firstItem="d6F-Gj-azC" firstAttribute="top" secondItem="CwZ-Qe-XsI" secondAttribute="bottom" constant="43" id="7ui-8V-SqG"/>
                         <constraint firstItem="cXV-47-mOX" firstAttribute="leading" secondItem="JTj-S1-ofb" secondAttribute="leading" constant="15" id="Cmm-tf-3nd"/>
                         <constraint firstAttribute="bottom" secondItem="cXV-47-mOX" secondAttribute="bottom" constant="5" id="DaB-sv-7sA"/>
                         <constraint firstAttribute="trailing" secondItem="CwZ-Qe-XsI" secondAttribute="trailing" id="FD7-Dy-fn7"/>
@@ -285,10 +284,12 @@
                         <constraint firstItem="CwZ-Qe-XsI" firstAttribute="top" secondItem="0jj-tQ-BqP" secondAttribute="bottom" constant="75" id="HYL-k9-oO3"/>
                         <constraint firstItem="D2Q-Pt-byO" firstAttribute="leading" secondItem="cXV-47-mOX" secondAttribute="trailing" constant="6" id="Jy6-G6-6Po"/>
                         <constraint firstAttribute="bottom" secondItem="pZx-KT-YJ4" secondAttribute="bottom" constant="2" id="NBk-no-0WS"/>
-                        <constraint firstItem="d6F-Gj-azC" firstAttribute="leading" secondItem="pZx-KT-YJ4" secondAttribute="trailing" constant="15" id="RYb-IW-PqQ"/>
+                        <constraint firstAttribute="trailing" secondItem="d6F-Gj-azC" secondAttribute="trailing" constant="8" id="Ogr-jF-6Dh"/>
                         <constraint firstAttribute="bottom" secondItem="D2Q-Pt-byO" secondAttribute="bottom" constant="5" id="UPR-dr-oOu"/>
-                        <constraint firstAttribute="trailing" secondItem="d6F-Gj-azC" secondAttribute="trailing" constant="16" id="e01-oK-IDL"/>
+                        <constraint firstItem="d6F-Gj-azC" firstAttribute="leading" secondItem="pZx-KT-YJ4" secondAttribute="trailing" constant="13" id="WVy-6w-Co5"/>
+                        <constraint firstItem="d6F-Gj-azC" firstAttribute="top" secondItem="CwZ-Qe-XsI" secondAttribute="bottom" constant="34" id="bpj-cv-0e8"/>
                         <constraint firstAttribute="bottom" secondItem="d6F-Gj-azC" secondAttribute="bottom" id="iny-EH-mK8"/>
+                        <constraint firstAttribute="bottom" secondItem="d6F-Gj-azC" secondAttribute="bottom" id="l2p-lj-GtU"/>
                         <constraint firstItem="0jj-tQ-BqP" firstAttribute="leading" secondItem="JTj-S1-ofb" secondAttribute="leading" constant="12" id="s1I-HA-Kly"/>
                     </constraints>
                 </view>
@@ -323,6 +324,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="button_channel_full_screen_normal" width="64" height="64"/>
         <image name="button_channel_smile_normal" width="48" height="48"/>
         <image name="gif_video_loading@2x－0" width="640" height="360"/>
         <image name="icon_compose_white" width="40" height="40"/>
@@ -330,7 +332,6 @@
         <image name="icon_mlive_gift_broken" width="110" height="110"/>
         <image name="recorded_video_back" width="42" height="42"/>
         <image name="recorded_video_exit_fullscreen" width="46" height="46"/>
-        <image name="recorded_video_fullscreen" width="46" height="46"/>
         <image name="recorded_video_subscribe" width="120" height="60"/>
         <image name="recorded_video_subscribed" width="120" height="60"/>
     </resources>

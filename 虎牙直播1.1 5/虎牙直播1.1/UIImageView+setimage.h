@@ -10,6 +10,8 @@
 
 @interface UIImageView (setimage)
 
-- (void) setYuan:(UIImageView *) image;
+
+- (void) setImageViewLayer;
+
 
 @end

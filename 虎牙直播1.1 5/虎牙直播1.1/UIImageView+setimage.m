@@ -9,10 +9,15 @@
 #import "UIImageView+setimage.h"
 
 @implementation UIImageView (setimage)
-- (void) setYuan:(UIImageView *) image
+
+
+- (void) setImageViewLayer
 {
-    image.layer.cornerRadius = image.frame.size.width * 0.5;
-    image.layer.masksToBounds = YES;
+    self.layer.cornerRadius = self.bounds.size.width * 0.5;
+    self.layer.masksToBounds = YES;
 }
+
+
+
 
 @end

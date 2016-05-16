@@ -7,7 +7,7 @@
 //
 
 #import "UIBarItem+setColor.h"
-
+#import "allTopController.h"
 @implementation UIBarItem (setColor)
 
 - (void)settitlEColor
@@ -16,6 +16,12 @@
                           NSForegroundColorAttributeName:[UIColor orangeColor]
                           };
     [self setTitleTextAttributes:dic forState:UIControlStateHighlighted];
+    
 }
+
+
+
+
+
 
 @end

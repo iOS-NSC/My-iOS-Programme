@@ -16,8 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFile;
 // 聊天框 底部View
 @property (weak, nonatomic) IBOutlet UIView *footView;
-// 视频
-@property (weak, nonatomic) IBOutlet UIView *topView;
+
 
 @property (weak, nonatomic) IBOutlet UIView *footAndPerson;
 // 视频加载
@@ -52,12 +51,11 @@ static int i = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.textFile.delegate = self;
-    self.top = self.topView.frame;
     self.bigImage = self.animationImageView.frame;
     self.foor = self.footAndPerson.frame;
     
     self.isDingYUE.selected = self.isDing;
-    NSLog(@"%d",self.isDing);
+//    NSLog(@"%d",self.isDing);
     self.personLabel.text = [NSString stringWithFormat:@"%@",self.perosnS];
     
     //    视频加载 动画
@@ -84,8 +82,7 @@ static int i = 0;
 }
 // 点击隐藏 视频的边栏
 - (IBAction)topAndFoot:(id)sender {
-//    隐藏 返回按钮
-    self.topView.hidden = !self.topView.hidden;
+
     self.footAndPerson.hidden = !self.footAndPerson.hidden;
 //    定时隐藏
     [self TopAndWei];
@@ -188,11 +185,10 @@ static int i = 0;
 // 定时隐藏
 - (void) TopAndWei
 {
-    if (self.topView.hidden == NO) {
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self topAndFoot:nil];
         });
-    }
     
 }
 

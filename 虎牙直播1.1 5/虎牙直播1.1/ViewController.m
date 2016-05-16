@@ -57,25 +57,30 @@ static NSString * const reuseIdentifier = @"Cell";
 //    NSLog(@"%@",self.directTelecastModel);
 
     
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-    NSString *imagePath = [path stringByAppendingPathComponent:@"imageName"];
     
-    self.meImageView.image = [UIImage imageNamed:[NSString stringWithContentsOfFile:imagePath encoding:NSUTF8StringEncoding error:nil]];
-//
+   self.meImageView.image = [UIImage returdataImage];
+    
     self.x = 100;
     self.tabBarItem.selectedImage = [UIImage setImageOriginal:@"icon_tab_0_selected-1"];
     self.tabBarItem.image = [UIImage setImageOriginal:@"icon_tab_0_normal副本"];
     [self.tabBarItem settitlEColor];
     
-    self.meImageView.layer.cornerRadius = 23.5;
-    self.meImageView.layer.masksToBounds = YES;
+    [self.meImageView setImageViewLayer];
     self.viewShowVCD.delegate = self;
     
 //     设置 直播 头部的button
 
     [self setToButton:self.directTelecastModel andAddVIew:self.TouScrollView];
     [self setviewlayer:self.titleNa];
+ 
 }
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+     self.meImageView.image = [UIImage returdataImage];
+}
+
 // 设置阴影
 - (void) setviewlayer:(UIView *) viewName
 {

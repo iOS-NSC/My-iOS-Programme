@@ -46,62 +46,46 @@
     return _recreationModel;
 }
 
-
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-//    
-//    recreationModel *array = self.recreationModel;
-//    NSMutableArray *mutabArray  =[ NSMutableArray array];
-//    for (recreationModel *array in self.recreationModel) {
-//        for (recreationMassage  *sss in array.recreation) {
-//            BOOL block = NO;
-//            [mutabArray addObject:@(block)];
-//        }
-//  
-//    }
-//    
-//    BOOL sex = NO;
-//
-    
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-    NSString *imagePath = [path stringByAppendingPathComponent:@"imageName"];
-    
-//    NSString *sexpath = [path stringByAppendingPathComponent:@"sex"];
-
-//    NSString *namePath = [path stringByAppendingPathComponent:@"name"];
-//    NSString *name =  @"空❤️、守心";
-//    [name writeToFile:namePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-   
-//    NSString *imageName1 =  @"me";
-//    [imageName1 writeToFile:imagePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-//    
-//    NSString *name1 = [NSString stringWithContentsOfFile:namePath encoding:NSUTF8StringEncoding error:nil];
-//    NSLog(@"%@",name1);
-//    
-//    NSString *arrayPath = [path stringByAppendingPathComponent:@"DingYueAll"];
-//    [mutabArray writeToFile:arrayPath atomically:YES];
-//    NSLog(@"%@",[NSArray arrayWithContentsOfFile:arrayPath]);
-//    
-    
 
 //  设置 tabbar 图标为原色
-
+//    NSData *dataimage = [NSData dataWithContentsOfFile:imagePath];
     self.tabBarItem.image = [UIImage setImageOriginal:@"icon_tab_1_normal"];
     self.tabBarItem.selectedImage = [UIImage setImageOriginal:@"icon_tab_1_selected"];
+
     [self.tabBarItem settitlEColor];
- 
-    self.menImageView.image = [UIImage imageNamed:[NSString stringWithContentsOfFile:imagePath encoding:NSUTF8StringEncoding error:nil]];
-    self.menImageView.layer.cornerRadius = 23.5;
-    self.menImageView.layer.masksToBounds = YES;
     
+ 
+ 
+    self.yuLeCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSLog(@"---");
+        
+        MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(datas)];
+        // 隐藏时间
+        header.lastUpdatedTimeLabel.hidden = YES;
+    }];
+    self.yuLeCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:nil];
+    
+    [self.menImageView setImageViewLayer];
+     self.menImageView.image = [UIImage returdataImage];
     
 //  设置 娱乐 头部的button
     [self setToButton:self.recreationModel andAddVIew:self.yuLeScrollView];
     [self setviewlayer:self.yuLeBigView];
 }
+
+- (void)datas
+{
+    NSLog(@"-------");
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.menImageView.image = [UIImage returdataImage];
+}
+
 
 // 设置阴影
 - (void) setviewlayer:(UIView *) viewName
