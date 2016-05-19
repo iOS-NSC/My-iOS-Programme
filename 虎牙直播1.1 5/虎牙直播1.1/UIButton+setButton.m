@@ -7,7 +7,7 @@
 //
 
 #import "UIButton+setButton.h"
-
+#import "allTopController.h"
 
 
 @implementation UIButton (setButton)
@@ -45,6 +45,11 @@
     
     return self;
 }
+
+
+
+
+
 
 
 @end

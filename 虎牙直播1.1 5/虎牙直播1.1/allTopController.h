@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImage+setImageOriginal.h"
-
+#import "MyLayout.h"
 #import "UIBarItem+setColor.h"
 #import "YuleCell.h"
 #import "RecipeCollectionHeaderView.h"
 #import "UIButton+setButton.h"
 #import "UIBarItem+setColor.h"
-#import "ImageViewAnnulus.h"
 #import "meTableViewController.h"
 #import "recreationModel.h"
 #import "recreationMassage.h"
@@ -35,6 +34,11 @@
 #import "messageController.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "MyControllerBar.h"
+#import "tabbarController.h"
+#import "meTableViewController.h"
+#import "GOViewController.h"
+#import "meViewController.h"
 @interface allTopController : UIViewController
 
 @end

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *meImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableVeiw;
 
+@property (weak, nonatomic) IBOutlet UIButton *tabButton;
 
 @end
 
@@ -21,21 +22,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //  设置 tabBar 图标为原色
-    self.tabBarItem.image = [UIImage setImageOriginal:@"icon_tab_3_normal"];
-    self.tabBarItem.selectedImage = [UIImage setImageOriginal:@"icon_tab_3_selected"];
-   
+
+    [self.tabButton setBackgroundImage: [UIImage returdataImage] forState:(UIControlStateNormal)];
+    self.tabButton.layer.cornerRadius = self.tabButton.bounds.size.width * 0.5;
+    self.tabButton.layer.masksToBounds = YES;
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"button_update_tip_hover"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.translucent = NO;
+
+    //设置导航条 样式
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
     [self.meImageView setImageViewLayer];
     self.meImageView.image = [UIImage returdataImage];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    self.meImageView.image = [UIImage returdataImage];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tabButton setBackgroundImage: [UIImage returdataImage] forState:(UIControlStateNormal)];
+}
+
 
 
 #pragma mark ------ 数据源

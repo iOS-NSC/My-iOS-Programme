@@ -8,7 +8,8 @@
 
 #import "bigScreenViewController.h"
 #import "allTopController.h"
-@interface bigScreenViewController ()<UITextFieldDelegate>
+#import "GCDAsyncSocket.h"
+@interface bigScreenViewController ()<UITextFieldDelegate,GCDAsyncSocketDelegate>
 
 // 滑动视图
 @property (weak, nonatomic) IBOutlet UIScrollView *NeiRongView;
@@ -40,6 +41,9 @@
 // 订阅
 @property (weak, nonatomic) IBOutlet UIButton *isDingYUE;
 
+//发送端的socket对象
+@property (nonatomic, strong) GCDAsyncSocket *clientSocket;
+
 @end
 
 /***************************************************************/
@@ -63,8 +67,24 @@ static int i = 0;
     //    定时隐藏
     [self TopAndWei];
     
+    
+    
+    
     //订阅通知  退出键盘
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    
+//    连接主机
+    self.clientSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    NSError *errer = nil;
+    [self.clientSocket connectToHost:@"172.16.1.53" onPort:8888 withTimeout:-1 error:&errer];
+
+    if (!errer) {
+        NSLog(@"正在连接中.....");
+    } else {
+        NSLog(@"客户端无法连接:%@", errer.userInfo);
+    }
+    
     
     
 }
@@ -85,7 +105,10 @@ static int i = 0;
 
     self.footAndPerson.hidden = !self.footAndPerson.hidden;
 //    定时隐藏
-    [self TopAndWei];
+    if (self.footAndPerson.hidden == 0) {
+        [self TopAndWei];
+    }
+  
 
 }
 //
@@ -151,10 +174,40 @@ static int i = 0;
 - (IBAction)text:(UITextField *)sender {
     
     [self HuoQu:sender.text and:YES];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self HuoQu:@"呵呵" and:NO];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self HuoQu:@"呵呵" and:NO];
+//    });
+    
+    [self.clientSocket writeData:[sender.text dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:0];
+    
+    
 }
+
+//连接成功
+- (void) socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
+{
+    NSLog(@"连接成功");
+//    处于等待接收数据状态
+    [self.clientSocket readDataWithTimeout:-1 tag:0];
+}
+//客户端发送成功
+- (void) socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
+{
+     NSLog(@"客户端发送成功");
+}
+//接收另一端发来的消息
+- (void) socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+    NSString *readstr = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
+     [self HuoQu:readstr and:NO];
+    [self.clientSocket readDataWithTimeout:-1 tag:0];
+}
+
+
+
+
+
+
 
 // 聊天窗口
 -(void) HuoQu:(NSString *) titile and:(BOOL) zuo

@@ -226,7 +226,7 @@
 - (IBAction)returnVC:(UIButton *)sender {
     
     self.imager(self.me.image,self.MeSetName);
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

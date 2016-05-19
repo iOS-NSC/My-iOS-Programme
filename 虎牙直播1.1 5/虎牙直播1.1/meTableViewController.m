@@ -52,7 +52,7 @@
 }
 
 - (IBAction)returnUPVC:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // 点击已经订阅的主播跳转
@@ -86,7 +86,6 @@
         default:
             return 1;
     }
-    
 }
 
 
@@ -122,14 +121,12 @@
         default:
             return self.set;
             break;
-           
     }
 
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
 //    第三组的
     if (indexPath.section == 2) {
 //         打开相机
@@ -151,7 +148,6 @@
 {
 //    取出目标控制器
     UIViewController *vc = segue.destinationViewController;
-
 //    判断目标VC 是否 是修改界面
     if ([vc isKindOfClass:[meXinxi class]]) {
         meXinxi *me = (meXinxi*)vc;

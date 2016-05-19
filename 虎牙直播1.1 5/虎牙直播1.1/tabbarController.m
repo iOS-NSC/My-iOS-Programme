@@ -7,17 +7,37 @@
 //
 
 #import "tabbarController.h"
-#import "UIBarItem+setColor.h"
-#import "UIImage+setImageOriginal.h"
+#import "allTopController.h"
 @interface tabbarController ()
+
+@property (nonatomic,strong) NSArray *tabBarItem;
 
 @end
 
 @implementation tabbarController
 
+
+- (NSArray *) tabBarItem
+{
+    if (!_tabBarItem) {
+        NSString *path  =[[NSBundle mainBundle] pathForResource:@"tabBarItem.plist" ofType:nil];
+        _tabBarItem  =[NSArray arrayWithContentsOfFile:path];
+    }
+    return _tabBarItem;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    for (int i = 0; i < self.childViewControllers.count; i++) {
+        UIViewController *vc = self.childViewControllers[i];
+        NSDictionary *dic = self.tabBarItem[i];
+        [vc.tabBarItem settitlEColor];
+        vc.tabBarItem.image = [UIImage setImageOriginal:dic[@"image"]];
+        vc.tabBarItem.selectedImage = [UIImage setImageOriginal:dic[@"selectedImage"]];
+    }
+    
+    
+    
 
 }
 

@@ -13,7 +13,13 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *yuLeCollectionView;
 // 娱乐 头
 @property (weak, nonatomic) IBOutlet UIScrollView *yuLeScrollView;
+
+@property (weak, nonatomic) IBOutlet UIButton *barbutton;
 //
+
+
+
+
 @property (weak, nonatomic) IBOutlet UIView *yuLeBigView;
 // 娱乐组头部
 @property (nonatomic,strong) NSArray *yuLeTop;
@@ -51,23 +57,26 @@
     [super viewDidLoad];
 
 //  设置 tabbar 图标为原色
-//    NSData *dataimage = [NSData dataWithContentsOfFile:imagePath];
-    self.tabBarItem.image = [UIImage setImageOriginal:@"icon_tab_1_normal"];
-    self.tabBarItem.selectedImage = [UIImage setImageOriginal:@"icon_tab_1_selected"];
+//    UIButton *button = [GOViewController setLeftNavigationBarButton];
+    [self.barbutton setBackgroundImage: [UIImage returdataImage] forState:(UIControlStateNormal)];
+    self.barbutton.layer.cornerRadius = self.barbutton.bounds.size.width * 0.5;
+    self.barbutton.layer.masksToBounds = YES;
 
-    [self.tabBarItem settitlEColor];
     
- 
- 
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"button_update_tip_hover"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    
+    self.yuLeCollectionView.collectionViewLayout = [[MyLayout alloc] init];
     self.yuLeCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSLog(@"---");
-        
-        MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(datas)];
-        // 隐藏时间
-        header.lastUpdatedTimeLabel.hidden = YES;
+
+        [self.yuLeCollectionView.mj_header endRefreshing];
+  
     }];
     self.yuLeCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:nil];
-    
+
+
     [self.menImageView setImageViewLayer];
      self.menImageView.image = [UIImage returdataImage];
     
@@ -76,14 +85,9 @@
     [self setviewlayer:self.yuLeBigView];
 }
 
-- (void)datas
-{
-    NSLog(@"-------");
-}
-
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.menImageView.image = [UIImage returdataImage];
+    [self.barbutton setBackgroundImage: [UIImage returdataImage] forState:(UIControlStateNormal)];
 }
 
 

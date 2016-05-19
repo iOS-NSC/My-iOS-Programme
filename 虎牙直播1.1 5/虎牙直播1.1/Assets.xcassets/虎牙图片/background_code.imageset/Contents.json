@@ -1,6 +1,20 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 5,
+          "top" : 83,
+          "right" : 338,
+          "left" : 0
+        }
+      },
       "idiom" : "universal",
       "filename" : "background_code.png",
       "scale" : "1x"
